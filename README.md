@@ -3,7 +3,8 @@
 A modern and responsive Food Ordering Web Application called FoodieHub, built using React.js and Tailwind CSS. This project provides a smooth and interactive food ordering experience where users can browse food items, add items to wishlist and manage their cart, and place orders easily.
 
 Project Overview
- FoodieHub is designed using React.js for building dynamic and reusable components, while Tailwind CSS is used for fast, clean, and responsive UI styling. The application simulates a real-world food ordering system where users can explore different restaurants, choose their favorite food items, add them to the wishlist and cart, and complete their order through a checkout form. It also includes dark and light mode support for a better user experience.
+
+FoodieHub is designed using React.js for building dynamic and reusable components, while Tailwind CSS is used for fast, clean, and responsive UI styling. The application simulates a real-world food ordering system where users can explore different restaurants, choose their favorite food items, add them to the wishlist and cart, and complete their order through a checkout form. It also includes dark and light mode support for a better user experience.
 
 Features
 
@@ -14,12 +15,14 @@ Food Ordering & Cart System
   - Remove items from cart easily
   - Automatically calculate and update total price in real-time
   - Clear entire cart with a single button
+    
  
 Checkout System
   - Users can place their order using a simple and structured checkout form:
   Full Name,Email Address, Delivery Address, City, Phone Number
   - After filling the form, users can click “Place Order” to complete the ordering process.Upon successful order placement, a professional Order Success Page is displayed showing:
-  Customer name, Order number, Delivery address, Total amount in Pakistani Rupees (₨), Estimated delivery time
+Customer name, Order number, Delivery address, Total amount in Pakistani Rupees (₨), Estimated delivery time
+
 
  Wishlist System
   - Save favorite food items to a personal wishlist
@@ -33,10 +36,12 @@ Checkout System
   - Smooth transitions between modes
   - Works consistently across all pages
 
+
  Contact Page
   - Displays contact information: Address, Phone Number, Email, and Opening Hours
   - Includes a functional contact form with Name, Email, and Message fields
   - Form submission shows a confirmation message
+
 
  Home Page
   - Hero section with a high-quality background image and call-to-action buttons
@@ -48,6 +53,7 @@ Checkout System
   - Customer reviews section
   - Displays user feedback about food and service
 
+
  Restaurants Page
  - Displays all available restaurants in a responsive grid
  - Search functionality to find restaurants by name
@@ -55,11 +61,13 @@ Checkout System
  - Each restaurant card shows: image, name, cuisine, rating, and an “Order Now” button
  - In each restaurant lists all menu items with: image, name, description, price (in ₨), Add to Cart button, and wishlist heart icon
 
+
  Cart Page
   - Lists all items added to the cart
   - Quantity controls and remove buttons
   - Order summary showing subtotal, delivery fee (Rs 299), and total amount
   - Continue Shopping and Proceed to Checkout buttons
+
 
  Footer Section
   - Professional footer with company logo, quick links, and social media icons
