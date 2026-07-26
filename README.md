@@ -6,7 +6,7 @@ Project Overview
 
 FoodieHub is designed using React.js for building dynamic and reusable components, while Tailwind CSS is used for fast, clean, and responsive UI styling. The application simulates a real-world food ordering system where users can explore different restaurants, choose their favorite food items, add them to the wishlist and cart, and complete their order through a checkout form. It also includes dark and light mode support for a better user experience.
 
-Features
+Features:
 
 Food Ordering & Cart System
   - Browse a variety of delicious food items from different restaurants
@@ -19,9 +19,9 @@ Food Ordering & Cart System
  
 Checkout System
   - Users can place their order using a simple and structured checkout form:
-  Full Name,Email Address, Delivery Address, City, Phone Number
+                                                                                                                                        Full Name,Email Address, Delivery Address, City, Phone Number
   - After filling the form, users can click “Place Order” to complete the ordering process.Upon successful order placement, a professional Order Success Page is displayed showing:
-Customer name, Order number, Delivery address, Total amount in Pakistani Rupees (₨), Estimated delivery time
+                                                                                                                                    Customer name, Order number, Delivery address, Total amount in Pakistani Rupees (Rs) and Estimated delivery time
 
 
  Wishlist System
