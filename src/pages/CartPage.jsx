@@ -6,6 +6,10 @@ import { FaShoppingCart, FaTrashAlt, FaHome, FaArrowRight } from 'react-icons/fa
 const CartPage = () => {
   const { cartItems, getTotalPrice, clearCart } = useCart();
   
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('en-PK').format(price);
+  };
+  
   if (cartItems.length === 0) {
     return (
       <div className="bg-gray-50 dark:bg-gray-900 min-h-screen py-20">
@@ -13,7 +17,9 @@ const CartPage = () => {
           <FaShoppingCart className="text-6xl text-gray-300 dark:text-gray-600 mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-gray-600 dark:text-gray-400 mb-4">Your cart is empty</h2>
           <p className="text-gray-500 dark:text-gray-500 mb-8">Looks like you haven't added any items yet</p>
-          <Link to="/restaurants" className="bg-orange-500 text-white px-8 py-3 rounded-full hover:bg-orange-600 transition inline-block">Browse Restaurants</Link>
+          <Link to="/restaurants" className="bg-orange-500 text-white px-8 py-3 rounded-full hover:bg-orange-600 transition inline-block">
+            Browse Restaurants
+          </Link>
         </div>
       </div>
     );
@@ -44,11 +50,26 @@ const CartPage = () => {
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 sticky top-20">
               <h2 className="text-xl font-bold mb-4 border-b pb-2 text-gray-800 dark:text-white">Order Summary</h2>
               <div className="space-y-3 mb-4">
-                <div className="flex justify-between"><span className="text-gray-600 dark:text-gray-400">Subtotal:</span><span className="font-semibold dark:text-white">${getTotalPrice().toFixed(2)}</span></div>
-                <div className="flex justify-between"><span className="text-gray-600 dark:text-gray-400">Delivery Fee:</span><span className="font-semibold dark:text-white">$2.99</span></div>
-                <div className="border-t pt-3 dark:border-gray-700"><div className="flex justify-between"><span className="text-lg font-bold dark:text-white">Total:</span><span className="text-xl font-bold text-orange-500">${(getTotalPrice() + 2.99).toFixed(2)}</span></div></div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600 dark:text-gray-400">Subtotal:</span>
+                  <span className="font-semibold dark:text-white">₨ {formatPrice(getTotalPrice())}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600 dark:text-gray-400">Delivery Fee:</span>
+                  <span className="font-semibold dark:text-white">₨ 299</span>
+                </div>
+                <div className="border-t pt-3 dark:border-gray-700">
+                  <div className="flex justify-between">
+                    <span className="text-lg font-bold dark:text-white">Total:</span>
+                    <span className="text-xl font-bold text-orange-500">₨ {formatPrice(getTotalPrice() + 299)}</span>
+                  </div>
+                </div>
               </div>
-              <Link to="/checkout"><button className="w-full bg-orange-500 text-white py-3 rounded-full font-semibold hover:bg-orange-600 transition flex items-center justify-center gap-2">Proceed to Checkout <FaArrowRight /></button></Link>
+              <Link to="/checkout">
+                <button className="w-full bg-orange-500 text-white py-3 rounded-full font-semibold hover:bg-orange-600 transition flex items-center justify-center gap-2">
+                  Proceed to Checkout <FaArrowRight />
+                </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,11 +1,13 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useWishlist } from '../context/WishlistContext';
 import { useTheme } from '../context/ThemeContext';
-import { FaShoppingCart, FaSun, FaMoon } from 'react-icons/fa';
+import { FaShoppingCart, FaSun, FaMoon, FaHeart, FaEnvelope } from 'react-icons/fa';
 import { useState } from 'react';
 
 const Navbar = () => {
   const { getTotalItems } = useCart();
+  const { wishlistItems } = useWishlist();
   const { darkMode, toggleDarkMode } = useTheme();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,6 +15,7 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Restaurants', path: '/restaurants' },
+    { name: 'Contact', path: '/contact' },
   ];
   
   return (
@@ -28,14 +31,25 @@ const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`hover:text-orange-500 transition ${
+                className={`flex items-center gap-1 hover:text-orange-500 transition ${
                   location.pathname === link.path ? 'text-orange-500 font-semibold' : 'text-gray-700 dark:text-gray-300'
                 }`}
               >
-                {link.name}
+                {link.icon} {link.name}
               </Link>
             ))}
             
+            {/* Wishlist Icon */}
+            <Link to="/wishlist" className="relative">
+              <FaHeart size={22} className="text-gray-700 dark:text-gray-300 hover:text-red-500 transition" />
+              {wishlistItems.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center">
+                  {wishlistItems.length}
+                </span>
+              )}
+            </Link>
+            
+            {/* Dark Mode Toggle */}
             <button
               onClick={toggleDarkMode}
               className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-orange-500 hover:text-white transition"
@@ -43,6 +57,7 @@ const Navbar = () => {
               {darkMode ? <FaSun size={18} className="text-yellow-500" /> : <FaMoon size={18} className="text-gray-700" />}
             </button>
             
+            {/* Cart Icon */}
             <Link to="/cart" className="relative">
               <FaShoppingCart size={22} className="text-gray-700 dark:text-gray-300" />
               {getTotalItems() > 0 && (
@@ -53,6 +68,7 @@ const Navbar = () => {
             </Link>
           </div>
           
+          {/* Mobile Menu Button */}
           <div className="flex items-center gap-3 md:hidden">
             <button
               onClick={toggleDarkMode}
@@ -66,6 +82,7 @@ const Navbar = () => {
           </div>
         </div>
         
+        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden pb-4">
             {navLinks.map((link) => (
@@ -80,8 +97,11 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
+            <Link to="/wishlist" className="block py-2 text-gray-700 dark:text-gray-300" onClick={() => setIsMenuOpen(false)}>
+              ❤️ Wishlist ({wishlistItems.length})
+            </Link>
             <Link to="/cart" className="block py-2 text-gray-700 dark:text-gray-300" onClick={() => setIsMenuOpen(false)}>
-              Cart ({getTotalItems()})
+              🛒 Cart ({getTotalItems()})
             </Link>
           </div>
         )}

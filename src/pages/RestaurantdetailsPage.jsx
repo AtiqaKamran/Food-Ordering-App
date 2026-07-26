@@ -1,11 +1,13 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { restaurants, foodItems } from '../data/mockData';
 import FoodItemCard from '../components/FoodItemCard';
-import { FaStar, FaClock, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaStar, FaClock, FaHeart, FaRegHeart } from 'react-icons/fa';
+import { useWishlist } from '../context/WishlistContext';
 
 const RestaurantDetailsPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { addToWishlist, isInWishlist } = useWishlist();
   const restaurant = restaurants.find(r => r.id === parseInt(id));
   const menuItems = foodItems.filter(item => item.restaurantId === parseInt(id));
   
@@ -20,6 +22,7 @@ const RestaurantDetailsPage = () => {
   
   return (
     <div>
+      {/* Back Button */}
       <div className="bg-white dark:bg-gray-900 shadow-sm border-b dark:border-gray-700">
         <div className="container mx-auto px-4 py-3">
           <button onClick={() => navigate('/restaurants')} className="text-orange-500 hover:text-orange-600 transition flex items-center gap-2">
@@ -28,6 +31,7 @@ const RestaurantDetailsPage = () => {
         </div>
       </div>
       
+      {/* Restaurant Banner */}
       <div className="relative h-80 bg-gray-800">
         <img src={restaurant.image} alt={restaurant.name} className="w-full h-full object-cover opacity-40" />
         <div className="absolute inset-0 flex items-center justify-center">
@@ -41,14 +45,13 @@ const RestaurantDetailsPage = () => {
               <div className="flex items-center gap-2 bg-black/30 px-4 py-1 rounded-full">
                 <FaClock /> <span>{restaurant.deliveryTime}</span>
               </div>
-              <div className="flex items-center gap-2 bg-black/30 px-4 py-1 rounded-full">
-                <FaMapMarkerAlt /> <span>Free Delivery</span>
-              </div>
+              {/* FREE DELIVERY REMOVED - Nothing here now */}
             </div>
           </div>
         </div>
       </div>
       
+      {/* Menu Section */}
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">Our Menu</h2>
